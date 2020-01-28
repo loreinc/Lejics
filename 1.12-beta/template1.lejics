@@ -1,0 +1,30 @@
+var : curretSelect;
+var : loc;
+arr : Data;
+var : index;
+curretSelect : "0";
+loc : 0;
+while : loc = "0" {
+clrscr,
+say : "Hello! Welcome to multi-room emulator template!",
+say : "Select one of listand type number.",
+say : "1. Change/select my age.",
+say : "2. Change/input my name.",
+say : "3. Change/input password",
+say : "Output array:",
+say : arr.Data,
+
+range : 1- 3- curretSelect,
+
+clrscr,
+if : curretSelect = "1" {
+	range : 18- 50- Data[0],
+
+},
+if : curretSelect = "2" {
+	input : Data[1]
+},
+if : curretSelect = "3" {
+	input : Data[2]
+}
+};
