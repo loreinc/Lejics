@@ -1,2 +1,0 @@
-a : "Hi!";
-emulate("say : a");
