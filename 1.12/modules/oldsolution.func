@@ -1,0 +1,583 @@
+old var solution: _____________________________________________________________________
+for(let y = 0; y<lcode.length; y++){
+					if(typeof lcode[y]["vars"] !== "undefined") {
+						let spliit = lcode[y]["vars"];
+						//console.log(lcode[y].vars) } }
+						let splut = spliit.split(" ");
+						if(splut[0] == fname) {
+							if (valobj.type === "var") {
+								for(let y = 0; y<lcode.length; y++){
+					if(typeof lcode[y]["vars"] !== "undefined") {
+						let spliit = lcode[y]["vars"];
+						let splut = spliit.split(" ");
+						//console.log(lcode[y].vars) } }
+						if(splut[0] == valobj.value) {
+							
+							iv = spliit.replace(valobj.value+" ", '');
+							//console.log(iv);
+							if(typeof iv !== "undefined"){
+								
+								
+							valobj.value = iv;
+					 }
+						}
+					}				 
+				}
+							} else {	
+							iv = splut[1];
+						}
+							//console.log(splut[0] + valobj.value);
+							if(typeof iv !== "undefined"){
+								if(typeof valobj.type !== undefined && valobj.type !== "integer" && typeof valobj["value"] !== "underfined") {
+						lcode[y]["vars"] = splut[0] + " " + valobj["value"].replace(/['"]+/g, '').replace(/&%2/g, '"');
+						checked = 1;
+					}
+					 }
+						}
+					}				 
+				}
+				______________________________________________________________________________________________
+
+old array solution: ________________________________________________________________________________________________________
+if (arrCheck.length > 1) {
+
+	//console.log("test");
+
+				for(let y = 0; y<lcode.length; y++){
+					if(typeof lcode[y]["arrname"] !== "undefined") {
+						let spliit = lcode[y]["arrname"];
+						//console.log("test2");
+						//console.log(lcode[y].vars) } }
+						//let splut = spliit.split(" ");
+						if (spliit == arrCheck[0]){
+							//console.log("TEST3");
+							let ai = arrCheck[1].replace("]", "");
+							//console.log(ai);
+							if(Number(ai)+1){
+								let index = Number(ai);
+								if(valobj['value'].replace('"', '') !== valobj.value) {
+									let carr = lcode[y]["arr"];
+									carr[index] = valobj.value;
+								} 
+								if(valobj['value'].replace('"', '') === valobj.value) {
+
+									let splut;
+									for(let yz = 0; yz<lcode.length; yz++){
+					if(typeof lcode[yz]["vars"] !== "undefined") {
+						//console.log("HERE OK");
+						let spliit = lcode[yz]["vars"];
+						 splut = spliit.split(" ");
+						 //console.log(splut);
+						let valuev;
+						if (splut.length > 2) {
+							for(let va=2; va < splut.length;va++){
+								if(va===2){
+									valuev = splut[va];
+									
+								} else {
+								valuev = valuev + " " + splut[va];
+							}
+							}
+						} else {
+							valuev = splut[1];
+						}
+						let carr = lcode[y]["arr"];
+						
+						carr[index] = valuev;
+					
+					}	
+						//console.log(lcode[y].vars) } }
+						//let carr = lcode[y]["arr"];
+						//			carr[index] = valobj.splut[2];
+								}
+							}
+							//	console.log(index);
+
+							} else {
+								let T;
+								let ai2;
+								for(let ya = 0; ya<lcode.length; ya++){
+					if(typeof lcode[ya]["vars"] !== "undefined") {
+						let spliit = lcode[ya]["vars"];
+						//console.log(lcode[y].vars) } }
+						let splut = spliit.split(" ");
+						if (splut[0] == ai) {
+							//console.log(Number(splut[1]));
+							if (Number(splut[1])) {
+								//console.log(valobj.value);
+								T = true;
+								ai2 = Number(splut[1]);
+								ai2 = String(ai2);
+								//console.log(ai2);
+								let job = {};
+								Object.assign(job, { 
+									"unknown type" : arrCheck[0] + "[" + ai2 + "]",
+									
+						"value" : {
+							"type" : "var",
+							"value" : valobj.value
+						}}); 
+								let lcode1 = lcode.slice(0,i+1);
+								let lcode2 = lcode.slice(i+1);
+								lcode1.push(job);
+				lcode = lcode1.concat(lcode2);
+				//console.log(lcode);
+							}
+						} else {
+							//console.log("\x1b[33m[WARN]\x1b[37m index '" + ai + "' can't be used.");
+						}
+					}}		
+							}
+
+						}
+					} 
+					//console.log("CHECKED");
+} }
+_______________________________________________________________________________________________________
+old IF/WHILE/FOR var checker __________________________________________________________________________
+if(fvar.split("[").length === 1 && svar.split("[").length === 1) {
+				for(let y = 0; y<lcode.length; y++){
+					if(typeof lcode[y]["vars"] !== "undefined") {
+						let spliit = lcode[y]["vars"];
+						let splut = spliit.split(" ");
+						//console.log(lcode[y].vars) } }
+						if(splut[0] === fvar && fvar.replace('"', "") == fvar) {
+						
+						
+							
+							//iv = spliit.replace(valobj.value+" ", '');
+							
+							if(typeof splut[1] !== "undefined"){
+								fvar = splut[1];
+								
+					 } 
+
+						} else if(splut[0] === svar && svar.replace('"', "") == svar) {
+							
+							if(typeof splut[1] !== "undefined"){
+								svar = splut[1];
+								
+					 }
+
+						}
+					}				 
+				} 
+			    } else {
+			    	if (fvar.split("[").length > 1) {
+			    		for(let aS = 0; aS < lcode.length; aS++){
+					if(typeof lcode[aS]["arrname"] !== "undefined") {
+						
+						
+							
+						let awi = fvar.split('[');
+						//awi = awi.split('[');
+						let spliit = lcode[aS]["arrname"];
+						/*if (spliit === fvar && valobj.value.replace('arr.', '').replace("[", "") === valobj.value.replace('arr.', '')){
+							lcode[aS]['arr']
+						} else*/ if (spliit === awi[0]){
+							let index = awi[1].replace("]","");
+							let abi = lcode[aS]['arr'][index];
+							if(typeof abi !== "undefined"){
+						//	abi = abi.replace('"', "");
+						//	abi = abi.replace('"', "");
+						fvar = abi;
+							//console.log(abi.replace('"', ""));
+							
+						} else {
+							console.log("\x1b[33m[WARN]\x1b[37m index '" + index + "' empty.");
+							fvar = "";
+						}
+						}
+						}
+				}
+			    	}
+
+			    	if (svar.split("[").length > 1) {
+			    		for(let aS = 0; aS < lcode.length; aS++){
+					if(typeof lcode[aS]["arrname"] !== "undefined") {
+						
+						
+							
+						let awi = svar.split('[');
+						//awi = awi.split('[');
+						let spliit = lcode[aS]["arrname"];
+						/*if (spliit === fvar && valobj.value.replace('arr.', '').replace("[", "") === valobj.value.replace('arr.', '')){
+							lcode[aS]['arr']
+						} else*/ if (spliit === awi[0]){
+							let index = awi[1].replace("]","");
+							let abi = lcode[aS]['arr'][index];
+							if(typeof abi !== "undefined"){
+						//	abi = abi.replace('"', "");
+						//	abi = abi.replace('"', "");
+						svar = abi;
+							//console.log(abi.replace('"', ""));
+							
+						} else {
+							console.log("\x1b[33m[WARN]\x1b[37m index '" + index + "' empty.");
+							svar = "";
+						}
+						}
+						}
+				}
+			    	}
+			    }
+______________________________________________________________________________________________________________________________
+OLD IF SYSTEM_________________________________________________________________________________________________________________
+
+							
+							let lcodet = lcode;
+							let counter = i+1;
+							let lcode1 = lcode.slice(0,i+1);
+								let lcode2 = lcode.slice(i+1);
+								let gs = 0;
+								let indexemp = 0;
+							
+							for(let u = 0; u < mcode.length; u++) {
+
+								let codi2 = mcode[u].split(/\s(?=(?:[^'"`]*(['"`])[^'"`]*\1)*[^'"`]*$)/gm);
+								let job = {};
+								let codi = [];
+								//let text;
+								for(let ii = 0;ii < codi2.length; ii++){
+						if(codi2[ii] !== '"' && typeof codi2[ii] !== "undefined") {
+							codi.push(codi2[ii]);
+						}
+					}
+				
+								console.log(codi)
+								//console.log(codi.length);
+								if (codi[0] !== "if" && dict["function"][codi[0].toLowerCase()]) {
+								Object.assign(job, { 
+							"function":codi[0]
+						});
+								//console.log(mcode);
+								if (/\"(.*)\"/gim.test(codi[2])) {
+								
+									//console.log(mcode);
+									Object.assign(job, { 
+						"value" : {
+							"type" : "string",
+							"value" : codi[2]
+						}}); 
+									
+								} else {
+									Object.assign(job, { 
+						"value" : {
+							"type" : "var",
+							"value" : codi[2]
+						}});
+								}
+							} if(!dict["function"][fname.toLowerCase()]) {
+								//console.log(codi);
+								//console.log();
+								Object.assign(job, { 
+									"unknown type" : codi[0],
+									
+						"value" : {
+							"type" : "string",
+							"value" : codi[2]
+						}}); 
+							}
+
+							 if(codi[0] == "if") {
+							 	//console.log(codi);
+								let ccd = [];
+								let tet;
+								for(var ac = 2; ac < codi.length;ac++){
+									ccd.push(codi[ac]);
+									//console.log();
+								}
+								for(var aac = 0; aac < ccd.length; aac++){
+									if(aac === 0) {
+										tet = ccd[aac];
+									} else {
+										tet = tet + " " + ccd[aac];
+									}
+								}
+								Object.assign(job, { 
+							"function":codi[0]
+						});
+								Object.assign(job, {
+									"value" : {
+										"type" : "string",
+										"value" : tet
+									}
+								});
+							//console.log(ccd);
+								Object.assign(job, {
+									
+
+				"fvar" : codi[2],
+				"znak" : codi[3],
+				"svar" : codi[4],
+				//"start" : pzd[3],
+				"code" : tet,
+				"spcode" : ccd
+
+			});	
+								//console.log(job);
+
+							}
+							if(codi[0] == "while") {
+								let ccd = [];
+								let tet;
+								for(var ac = 2; ac < codi.length;ac++){
+									ccd.push(codi[ac]);
+									//console.log();
+								}
+								for(var aac = 0; aac < ccd.length; aac++){
+									if(aac === 0) {
+										tet = ccd[aac];
+									} else {
+										tet = tet + " " + ccd[aac];
+									}
+								}
+								Object.assign(job, { 
+							"function":codi[0]
+						});
+								Object.assign(job, {
+									"value" : {
+										"type" : "string",
+										"value" : tet
+									}
+								});
+							//console.log(ccd);
+								Object.assign(job, {
+									
+
+				"fvar" : codi[2],
+				"znak" : codi[3],
+				"svar" : codi[4],
+				//"start" : pzd[3],
+				"code" : tet,
+				"spcode" : ccd
+
+			});
+							}
+
+
+							 if(codi[0] == "for") {
+								let ccd = [];
+								let tet;
+								for(var ac = 2; ac < codi.length;ac++){
+									ccd.push(codi[ac]);
+									//console.log();
+								}
+								for(var aac = 0; aac < ccd.length; aac++){
+									if(aac === 0) {
+										tet = ccd[aac];
+									} else {
+										tet = tet + " " + ccd[aac];
+									}
+								}
+								Object.assign(job, { 
+							"function":codi[0]
+						});
+								Object.assign(job, {
+									"value" : {
+										"type" : "string",
+										"value" : tet
+									}
+								});
+							//console.log(ccd);
+								Object.assign(job, {
+									
+
+				"fvar" : codi[2],
+				"znak" : codi[3],
+				"svar" : codi[4],
+				//"start" : pzd[3],
+				"code" : tet,
+				"spcode" : ccd
+
+			});
+							}
+							if(codi[0] === "//") {
+									Object.assign(job, { 
+										"value" : {
+									"type" : "underfined",
+									"value" : "nth"
+								}
+								
+							});
+								}if(codi[0] === "var"){
+								//console.log("ШОТО НЕ ТАКС");
+								Object.assign(job, { 
+									"function" : "var",
+									"vars" : codi[2] + " ",
+						"value" : {
+							"type" : "undefined",
+							"value" : ""
+						}}); 
+							} if(!dict["function"][codi[0].toLowerCase()]) {
+								//console.log("here");
+								Object.assign(job, { 
+									
+									"unknown type" : codi[0],
+						"value" : {
+							"type" : "string",
+							"value" : codi[2]
+						}}); 
+							}
+							if (codi[0] === "input") {
+									Object.assign(job, { 
+										"value" : {
+									"type" : "underfined",
+									"value" : codi[2]
+								},
+								"varname" : codi[2]
+							});
+								}
+								if (codi[0] === "clrscr") {
+									 Object.assign(job, {
+									 "function" : "clrscr",
+										"value" : {
+									"type" : "underfined",
+									"value" : "th"
+								}});
+								}
+								if(codi[0] === "range"){
+									let dc;
+									if (codi.length > 3) {
+										for(let iai = 2; iai < codi.length; iai++){
+											if (iai === 2) {
+												dc = codi[iai];
+												console.log(codi[iai]);
+											} else {
+											dc = dc + " " + codi[iai];
+										}
+										}
+									} else 
+									console.log(dc);
+								let nvo = codi[2].split("-");
+								//console.log(nvo);
+								
+									if (typeof nvo[0] !== "undefined" && typeof nvo[1] !== "undefined" && typeof nvo[2] !== "undefined") {
+									let min = nvo[0].trim();
+								//	console.log(min);
+									let max = nvo[1].trim();
+									let varn = nvo[2].trim();
+									Object.assign(job, {
+										"value" : {
+									"type" : "underfined",
+									"value" : "KAVO"
+								},
+								"min" : min,
+								"max" : max,
+								"varname" : varn
+									});
+						 }
+
+						}
+						/*if (codi[0] === "say" && codi[2].replace('arr.', '') !== codi[2]) {
+							for(let aS = 0; aS < lcode.length; aS++){
+					if(typeof lcode[aS]["arrname"] !== "undefined") {
+						
+						
+							
+						let awi = codi[2].replace('arr.', '');
+						awi = awi.split('[');
+						let spliit = lcode[aS]["arrname"];
+						if (spliit === codi[2].replace('arr.', '') && codi[2].replace('arr.', '').replace("[", "") === codi[2].replace('arr.', '')){
+							cf(lcode[aS]['arr']);
+						} else if (spliit === awi[0]){
+							let index = awi[1].replace("]","");
+							let abi = lcode[aS]['arr'][index];
+							if(typeof abi !== "undefined"){
+							abi = abi.replace('"', "");
+							abi = abi.replace('"', "");
+
+							//console.log(abi.replace('"', ""));
+							cf(abi);
+						} else {
+							console.log("\x1b[33m[WARN]\x1b[37m index '" + index + "' empty.");
+						}
+						}
+						}
+				}
+
+						}*/
+							if(codi[0] == "v&s"){
+								//console.log("A");
+								let dc;
+									if (codi.length > 3) {
+										for(let iai = 2; iai < codi.length; iai++){
+											if (iai === 2) {
+												dc = codi[iai];
+											} else {
+											dc = dc + " " + codi[iai];
+										}
+										}
+									}
+									//console.log("A");
+							
+							if (/\"(.*)\"/gim.test(dc)) {
+								let all = dc.split("-");
+								//	console.log(cval);
+									if (typeof all[0] !== "undefined" && typeof all[1] !== "undefined") {
+										let a = all[0], b = all[1];
+										let c1 = true;
+										let c = true;
+										if (a.replace('"', "") !== a) {
+											c = false;
+										}
+										if (b.replace('"', "") !== b) {
+											c1 = false;
+										}
+									Object.assign(job, { 
+										"value" : {
+									"type" : "undefined",
+									"value" : dc,
+
+								},
+								"slot1" : a.trim(),
+									"slot2" : b.trim(),
+									"slot1var" : c,
+									"slot2var" : c1,
+
+								});
+									
+								}
+							}else{
+								let all = dc.split("-");
+								//	console.log(cval);
+									if (typeof all[0] !== "undefined" && typeof all[1] !== "undefined") {
+										let a = all[0], b = all[1];
+										let c1 = true;
+										let c = true;
+										if (a.replace("'", "") !== a) {
+											c = false;
+										}
+										if (b.replace("'", "") !== b) {
+											c1 = false;
+										}
+									Object.assign(job, { 
+										"value" : {
+									"type" : "undefined",
+									"value" : dc,
+
+								},
+								"slot1" : a.trim(),
+									"slot2" : b.trim(),
+									"slot1var" : true,
+									"slot2var" : true
+								});
+									if(typeof all[2] !== "undefined"){
+										Object.assign(job, {
+											"otv" : all[2].trim()
+										});
+									}
+
+								}
+							} }
+
+							lcode1.push(job);
+							
+
+								
+							}
+							lcode = lcode1.concat(lcode2);
+							//console.log(lcode);
+							//console.log(lcode);
+							
+						_____________________________________________________________________________--
